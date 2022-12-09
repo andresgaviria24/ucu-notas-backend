@@ -1,8 +1,8 @@
 package persistence
 
 import (
-	"university/domain/dto"
-	"university/domain/entity"
+	"ucu-notas-backend/domain/dto"
+	"ucu-notas-backend/domain/entity"
 
 	"gorm.io/gorm"
 )
@@ -20,9 +20,13 @@ func (s *StudentsRepositoryImpl) GetStudentWithNotes() (students *[]entity.Stude
 }
 
 func (s *StudentsRepositoryImpl) CreateNote(note dto.CreateNote, student string) error {
-	if err := s.db.Exec("INSERT into student_class (year,semester,id_student,id_class,nota) values (2022,1,?,1,?)", student, note.Note).Error; err != nil {
+	if err := s.db.Exec("INSERT into student_class (year,semester,id_student,id_class,nota) values (2022,1,?,6,?)", student, note.Note).Error; err != nil {
 		return err
 	}
+	/* localhost
+	if err := s.db.Exec("INSERT into student_class (year,semester,id_student,id_class,nota) values (2022,1,?,1,?)", student, note.Note).Error; err != nil {
+		return err
+	}*/
 	return nil
 }
 
